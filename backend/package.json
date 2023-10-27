@@ -1,0 +1,27 @@
+{
+  "name": "u09-business-idea-grupp3-u09",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@defer/client": "^1.10.0",
+    "axios": "^1.4.0",
+    "body-parser": "^1.20.2",
+    "cloudinary": "^1.41.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "mongodb": "^5.4.0",
+    "mongoose": "^7.1.1",
+    "node-fetch": "^3.3.1",
+    "serverless-http": "^3.2.0",
+    "stripe": "^12.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

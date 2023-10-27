@@ -1,0 +1,9 @@
+# Frontend (Client) Exclusions
+/client/node_modules
+/client/dist
+.env
+
+# Backend Exclusions
+/backend/node_modules
+/backend/dist
+.env
