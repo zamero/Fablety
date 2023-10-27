@@ -91,7 +91,9 @@ const BookForm: React.FC<BookFormProps> = ({
       {formSubmitted ? (
         generatedStory ? (
           <StoryDisplay
+            // @ts-ignore
             storyText={generatedStory}
+            // @ts-ignore
             storyImg={generatedStoryImg}
           />
         ) : (

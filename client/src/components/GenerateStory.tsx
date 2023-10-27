@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
 import Footer from "../components/Footer"
 import BookForm, { BookFormData } from "./BookForm"
 
@@ -9,8 +8,6 @@ const GenerateStory: React.FC = () => {
   const [gender, setGender] = useState("")
   const [mood, setMood] = useState("")
   const [genre, setGenre] = useState("")
-
-  const navigate = useNavigate()
 
   const handleSubmit = async (formData: BookFormData): Promise<void> => {
     try {

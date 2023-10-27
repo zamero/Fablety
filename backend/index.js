@@ -6,8 +6,6 @@ const app = express()
 const { create, read } = require("./userCRUD")
 const User = require("./userSchema")
 const axios = require('axios');
-const fs = require('fs');
-const FormData = require('form-data');
 const cloudinary = require('cloudinary').v2;
 
 const mongoose = require("mongoose");
@@ -20,7 +18,6 @@ db.on("error", (err) => {
   db.on("connected", () => {
     console.log("Connected to database");
   });
-
 const engineId = 'stable-diffusion-xl-1024-v1-0';
 const apiHost = process.env.API_HOST || 'https://api.stability.ai';
 const StableapiKey = process.env.STABILITY_API_KEY;
@@ -400,7 +397,7 @@ app.use(cors(
 
             // Update the user's document in the database with the generated prompts
             user.Book[latestIndex].StableDiffusionPrompts = promptArray;
-            const imgHostingApiKey = process.env.CLOUDINARY_API_KEY; // Replace with your actual API key
+            const imgHostingApiKey = process.env.CLOUDINARY_API_KEY;
             const hostedImageUrls = [];
             const prompts = Object.values(StableDiffusionPrompts);
             console.log(prompts)
