@@ -48,12 +48,12 @@ const GenerateStory: React.FC = () => {
 
       // Use the latest book index to route to another page after a specific timer
       const latestBookIndex = latestBookIndexResponse.data.latestBookIndex
-      const delayInSeconds = 5 // Adjust the delay as needed (e.g., 5 seconds)
+      const delayInSeconds = 150 // Adjust the delay as needed (e.g., 5 seconds)
 
       setTimeout(() => {
         const url = `/view-latest-book/${userId}/${latestBookIndex}`
         navigate(url) // Use navigate to route to the specified URL
-      }, delayInSeconds * 150) // Convert seconds to milliseconds
+      }, delayInSeconds * 1000) // Convert seconds to milliseconds
     } catch (error) {
       console.error(error)
       setResponse("An error occurred. Please try again.")
