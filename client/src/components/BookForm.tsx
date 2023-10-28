@@ -33,7 +33,6 @@ const BookForm: React.FC<BookFormProps> = ({
   onGenreChange,
   onSubmit,
 }) => {
-  const history = useHistory() as History
   const [generatedStory, setGeneratedStory] = useState<string | null>(null)
   const [generatedStoryImg, setGeneratedStoryImg] = useState<string | null>(
     null
