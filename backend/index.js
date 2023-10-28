@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express")
-const serverless = require("serverless-http")
+// const serverless = require("serverless-http")
 const cors = require("cors")
 const app = express()
 const { create, read } = require("./userCRUD")
@@ -28,16 +28,38 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// const PORT = 4000;
+const PORT = 4000;
 
 app.use(cors(
-    { origin: "*",
+    { origin: "https://fablety.vercel.app",
       methods: ["POST", "GET", "PUT", "DELETE"],
       credentials: true
     }
     ));
 
     app.use(express.json({limit: '50mb'}));
+
+    app.get('/latest-book-index/:userId', async (req, res) => {
+      try {
+          const userId = req.params.userId;
+  
+          // Find the user by their ID
+          const user = await User.findById(userId);
+          if (!user) {
+              return res.status(404).json({ message: 'User not found' });
+          }
+  
+          if (user.Book.length === 0) {
+              return res.status(404).json({ message: 'No books found for the user' });
+          }
+  
+          const latestBookIndex = user.Book.length - 1;
+  
+          res.status(200).json({ latestBookIndex });
+      } catch (error) {
+          res.status(500).json({ message: error.message });
+      }
+  });
 
     app.put("/promoteadmin/:adminId/:userId", async (req, res) => {
       try {
@@ -568,7 +590,7 @@ app.use(cors(
       res.status(500).json({ message: "hello" });
     }
 
-    module.exports.handler = serverless(app)
+    // module.exports.handler = serverless(app)
     
     // async function hostImage(base64Data, imgHostingApiKey) {
     //   const formData = new FormData();
@@ -584,6 +606,6 @@ app.use(cors(
     //   });
     // }
     
-// app.listen(PORT, () => {
-//     console.log(`Server running on port ${PORT}`);
-//   });
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
