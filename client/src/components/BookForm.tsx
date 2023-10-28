@@ -1,7 +1,7 @@
 import axios from "axios"
 import React, { useState } from "react"
-import StoryDisplay from "./StoryDisplay" // Make sure to import StoryDisplay from the correct file path
-import Loader from "./Loader" // Import the Loader component
+import StoryDisplay from "./StoryDisplay"
+import Loader from "./Loader"
 
 export interface BookFormData {
   name: string
@@ -105,21 +105,21 @@ const BookForm: React.FC<BookFormProps> = ({
             <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
               <form
                 onSubmit={handleSubmit}
-                className="bg-neutral-950 rounded-xl shadow-lg p-10"
+                className="bg-primary/10 rounded-xl shadow-lg p-10"
               >
-                <h2 className="text-xl text-violet-500 font-semibold mb-5 mt-8 uppercase text-center">
+                <h2 className="text-xl text-secondary font-semibold mb-5 mt-8 uppercase text-center">
                   Create Book
                 </h2>
 
                 <div className="mb-5">
                   <label
                     htmlFor="name"
-                    className="block text-gray-100 text-sm font-bold mb-2"
+                    className="block text-neutral-900 text-sm font-bold mb-2"
                   >
                     Name
                   </label>
                   <input
-                    className="bg-neutral-800 shadow appearance-none rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+                    className="bg-neutral-50 shadow appearance-none rounded w-full py-2 px-3 text-neutral-900 leading-tight focus:outline-none focus:shadow-outline"
                     id="name"
                     type="text"
                     placeholder=""
@@ -131,12 +131,12 @@ const BookForm: React.FC<BookFormProps> = ({
                 <div className="mb-5">
                   <label
                     htmlFor="gender"
-                    className="block text-gray-100 text-sm font-bold mb-2"
+                    className="block text-neutral-900 text-sm font-bold mb-2"
                   >
                     Gender
                   </label>
                   <input
-                    className="bg-neutral-800 shadow appearance-none rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+                    className="bg-neutral-50 shadow appearance-none rounded w-full py-2 px-3 text-neutral-900 leading-tight focus:outline-none focus:shadow-outline"
                     id="gender"
                     type="text"
                     placeholder=""
@@ -148,12 +148,12 @@ const BookForm: React.FC<BookFormProps> = ({
                 <div className="mb-5">
                   <label
                     htmlFor="gender"
-                    className="block text-gray-100 text-sm font-bold mb-2"
+                    className="block text-neutral-900 text-sm font-bold mb-2"
                   >
                     Mood
                   </label>
                   <input
-                    className="bg-neutral-800 shadow appearance-none rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+                    className="bg-neutral-50 shadow appearance-none rounded w-full py-2 px-3 text-neutral-900 leading-tight focus:outline-none focus:shadow-outline"
                     id="gender"
                     type="text"
                     placeholder=""
@@ -165,12 +165,12 @@ const BookForm: React.FC<BookFormProps> = ({
                 <div className="mb-5">
                   <label
                     htmlFor="gender"
-                    className="block text-gray-100 text-sm font-bold mb-2"
+                    className="block text-neutral-900 text-sm font-bold mb-2"
                   >
                     Genre
                   </label>
                   <input
-                    className="bg-neutral-800 shadow appearance-none rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+                    className="bg-neutral-50 shadow appearance-none rounded w-full py-2 px-3 text-neutral-900 leading-tight focus:outline-none focus:shadow-outline"
                     id="gender"
                     type="text"
                     placeholder=""
@@ -181,7 +181,7 @@ const BookForm: React.FC<BookFormProps> = ({
 
                 <button
                   type="submit"
-                  className="bg-violet-600 hover.bg-violet-500 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
+                  className="bg-secondary hover:bg-secondary/80 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
                 >
                   Submit
                 </button>

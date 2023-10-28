@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import "./Loader.scss" // Ensure you import your SCSS file
+import "./Loader.scss"
 
 const Loader = () => {
   const [timeLeft, setTimeLeft] = useState(140) // 2 minutes and 20 seconds in seconds

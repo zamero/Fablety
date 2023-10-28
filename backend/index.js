@@ -14,7 +14,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true})
 const db = mongoose.connection
 db.on("error", (err) => {
     console.error(`err: ${err}`);
-  }); // if connected
+  });
   db.on("connected", () => {
     console.log("Connected to database");
   });
@@ -59,7 +59,7 @@ app.use(cors(
       } catch (error) {
           res.status(500).json({ message: error.message });
       }
-  });
+    });
 
     app.put("/promoteadmin/:adminId/:userId", async (req, res) => {
       try {
@@ -103,7 +103,6 @@ app.use(cors(
       }
     });
     
-
     app.get("/getallusers/:id", async (req, res) => {
       try {
         const { id } = req.params;
@@ -129,7 +128,6 @@ app.use(cors(
       }
     });
     
-
     app.delete("/deleteuser/:adminId/:userId", async (req, res) => {
       try {
         const { adminId, userId } = req.params;
@@ -238,9 +236,9 @@ app.use(cors(
             message: "New book record created",
           });
         }
-      });
+    });
 
-      app.get("/getid/:sub/", async (req, res) => {
+    app.get("/getid/:sub/", async (req, res) => {
         try {
           const { sub } = req.params;
           const user = await User.findOne({ sub: sub });
@@ -262,9 +260,9 @@ app.use(cors(
             message: error.message,
           });
         }
-      });
+    });
 
-      app.get("/stories/:id", async (req, res) => {
+    app.get("/stories/:id", async (req, res) => {
         const books = await read();
         const { id } = req.params;
         const user = await User.findOne(
@@ -282,9 +280,9 @@ app.use(cors(
             books: user.Book,
           });
         }
-      });
+    });
 
-      app.put("/create/:id", async (req, res) => {
+    app.put("/create/:id", async (req, res) => {
         try {
           const { name, gender, mood, genre } = req.body;
           const user = await User.updateOne(
@@ -302,7 +300,7 @@ app.use(cors(
             message: error.message,
           });
         }
-      });
+    });
 
       app.post('/create-story/:id', async (req, res) => {
         try {
@@ -457,7 +455,7 @@ app.use(cors(
                 throw new Error(errorMessage);
               }
         
-              const base64Data = response.data.artifacts[0].base64; // Make sure the image data is in 'image'
+              const base64Data = response.data.artifacts[0].base64;
               const cloudinaryImageUrl = await hostImage(base64Data);
               hostedImageUrls.push(cloudinaryImageUrl);
             }
@@ -475,97 +473,7 @@ app.use(cors(
               message: error.message,
           });
       }
-  });
-    
-  app.post('/generate-images', async (req, res) => {
-    try {
-      const textPrompts = [
-        `children book illustration by Cory Loftis of a cheerful girl named Felicia, standing in a garden at dawn, the rising sun illuminating her bright eyes and warming the scene`,
-        `children book illustration by Cory Loftis of a glowing and pulsating pebble floating mid-air, reflecting light onto Felicia's excited face, high contrast between the pebble's radiance and the garden's morning shade`,
-      ];
-  
-      const imgHostingApiKey = process.env.CLOUDINARY_API_KEY; // Replace with your actual API key
-      const hostedImageUrls = [];
-  
-      for (const textPrompt of textPrompts) {
-        const response = await axios.post(
-          `${apiHost}/v1/generation/${engineId}/text-to-image`,
-          {
-            text_prompts: [
-              {
-                text: textPrompt,
-                weight: 1
-              },
-              {
-                text: "jigsaw puzzle arabesque abstract surrealism sculpture transgressive neoplasticism lowbrow tachisme fauvism dada frame border ugly tiling watermark signature beginner amateur disfigured deformed distorted",
-                weight: -1
-              },
-            ],
-            cfg_scale: req.body.cfg_scale || 7,
-            height: req.body.height || 1024,
-            width: req.body.width || 1024,
-            steps: req.body.steps || 30,
-            samples: req.body.samples || 1,
-          },
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              Accept: 'application/json',
-              Authorization: `Bearer ${StableapiKey}`,
-            },
-          }
-        );
-  
-        if (response.status !== 200) {
-          const errorMessage = `Non-200 response: ${response.data}`;
-          throw new Error(errorMessage);
-        }
-  
-        const base64Data = response.data.artifacts[0].base64; // Make sure the image data is in 'image'
-        const cloudinaryImageUrl = await hostImage(base64Data);
-        hostedImageUrls.push(cloudinaryImageUrl);
-      }
-  
-      res.status(200).json({ message: 'Images generated and hosted successfully', hostedImageUrls });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'An error occurred while generating and hosting the images' });
-    }
-  });
-  
-  async function hostImage(base64Data) {
-    try {
-      // Upload the image to Cloudinary
-      const result = await cloudinary.uploader.upload(`data:image/jpeg;base64,${base64Data}`, {
-        folder: 'dream', // Optional: Change to your desired folder
-      });
-  
-      // Return the result which contains the URL of the uploaded image
-      console.log("IMG URL ADDED")
-      return result.secure_url;
-    } catch (error) {
-      console.error('Error uploading image to Cloudinary:', error);
-      throw error;
-    }
-  }
-  
-  app.post('/upload-image', async (req, res) => {
-    try {
-      const { base64Data } = req.body;
-  
-      if (!base64Data) {
-        return res.status(400).json({ message: 'Missing base64Data in request body' });
-      }
-  
-      // Upload the image to Cloudinary using the hostImage function
-      const imageUrl = await hostImage(base64Data);
-  
-      res.status(200).json({ imageUrl });
-    } catch (error) {
-      console.error('Error:', error);
-      res.status(500).json({ message: 'Image upload failed' });
-    }
-  });
+    });
 
     app.get("/getone/:id/:index", async (req, res) => {
       try {
@@ -586,21 +494,23 @@ app.use(cors(
       }
     });
 
+    async function hostImage(base64Data) {
+      try {
+        // Upload the image to Cloudinary
+        const result = await cloudinary.uploader.upload(`data:image/jpeg;base64,${base64Data}`, {
+          folder: 'dream',
+        });
+    
+        // Return the result which contains the URL of the uploaded image
+        console.log("IMG URL ADDED")
+        return result.secure_url;
+      } catch (error) {
+        console.error('Error uploading image to Cloudinary:', error);
+        throw error;
+      }
+    }
+
     // module.exports.handler = serverless(app)
-    
-    // async function hostImage(base64Data, imgHostingApiKey) {
-    //   const formData = new FormData();
-    //   formData.append('image', base64Data);
-    
-    //   return axios.post('https://api.imgbb.com/1/upload', formData, {
-    //     params: {
-    //       key: imgHostingApiKey,
-    //     },
-    //     headers: {
-    //       ...formData.getHeaders(),
-    //     },
-    //   });
-    // }
     
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

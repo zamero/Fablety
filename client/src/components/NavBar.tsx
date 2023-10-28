@@ -1,12 +1,10 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { useGoogleLogin } from "@react-oauth/google"
-// import { useGoogleLogin, googleLogout } from "@react-oauth/google";
 import axios from "axios"
 
 function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  // const [isUserOpen, setIsUserOpen] = useState(false);
   const [userAvatar, setuserAvatar] = useState(localStorage.getItem("avatar"))
   const [userEmail, setuserEmail] = useState(localStorage.getItem("email"))
   const [userName, setuserName] = useState(localStorage.getItem("name"))
