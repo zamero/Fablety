@@ -43,15 +43,16 @@ const GenerateStory: React.FC = () => {
 
       const userId = localStorage.getItem("userId")
       const latestBookIndexResponse = await axios.get(
-        `/latest-book-index/${userId}`
+        `${import.meta.env.VITE_AWS_LAMBDA}latest-book-index/${userId}`
       )
 
       // Use the latest book index to route to another page after a specific timer
       const latestBookIndex = latestBookIndexResponse.data.latestBookIndex
+      console.log(latestBookIndex)
       const delayInSeconds = 150 // Adjust the delay as needed (e.g., 5 seconds)
 
       setTimeout(() => {
-        const url = `/view-latest-book/${userId}/${latestBookIndex}`
+        const url = `/book/${latestBookIndex}`
         navigate(url) // Use navigate to route to the specified URL
       }, delayInSeconds * 1000) // Convert seconds to milliseconds
     } catch (error) {
