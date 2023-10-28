@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express")
-// const serverless = require("serverless-http")
+const serverless = require("serverless-http")
 const cors = require("cors")
 const app = express()
 const { create, read } = require("./userCRUD")
@@ -28,7 +28,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const PORT = 4000;
+// const PORT = 4000;
 
 app.use(cors(
     { origin: "https://fablety.vercel.app",
@@ -590,7 +590,7 @@ app.use(cors(
       res.status(500).json({ message: "hello" });
     }
 
-    // module.exports.handler = serverless(app)
+    module.exports.handler = serverless(app)
     
     // async function hostImage(base64Data, imgHostingApiKey) {
     //   const formData = new FormData();
@@ -606,6 +606,6 @@ app.use(cors(
     //   });
     // }
     
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
+// app.listen(PORT, () => {
+//     console.log(`Server running on port ${PORT}`);
+//   });

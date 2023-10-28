@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useState } from "react"
+import React, { useState } from "react"
 import StoryDisplay from "./StoryDisplay" // Make sure to import StoryDisplay from the correct file path
 import Loader from "./Loader" // Import the Loader component
 
@@ -55,20 +55,6 @@ const BookForm: React.FC<BookFormProps> = ({
       console.log(response.data)
       setGeneratedStoryImg(response.data.hostedImageUrls)
       setGeneratedStory(response.data.story)
-      // Now, make a GET request to retrieve the latest book index
-      const userId = localStorage.getItem("userId")
-      const latestBookIndexResponse = await axios.get(
-        `/latest-book-index/${userId}`
-      )
-
-      // Use the latest book index to route to another page after a specific timer
-      const latestBookIndex = latestBookIndexResponse.data.latestBookIndex
-      const delayInSeconds = 100 // Adjust the delay as needed (e.g., 5 seconds)
-
-      setTimeout(() => {
-        const url = `https://fablety.vercel.app/book/${latestBookIndex}`
-        window.location.href = url
-      }, delayInSeconds * 1000) // Convert seconds to milliseconds
     } catch (error) {
       console.error(error)
       // Handle error, e.g., show an error message to the user

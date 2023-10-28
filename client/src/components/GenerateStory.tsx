@@ -1,6 +1,8 @@
 import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import Footer from "../components/Footer"
 import BookForm, { BookFormData } from "./BookForm"
+import axios from "axios"
 
 const GenerateStory: React.FC = () => {
   const [response, setResponse] = useState("")
@@ -8,6 +10,7 @@ const GenerateStory: React.FC = () => {
   const [gender, setGender] = useState("")
   const [mood, setMood] = useState("")
   const [genre, setGenre] = useState("")
+  const navigate = useNavigate()
 
   const handleSubmit = async (formData: BookFormData): Promise<void> => {
     try {
@@ -38,7 +41,19 @@ const GenerateStory: React.FC = () => {
       setMood("")
       setGenre("")
 
-      // navigate("/my-stories")
+      const userId = localStorage.getItem("userId")
+      const latestBookIndexResponse = await axios.get(
+        `/latest-book-index/${userId}`
+      )
+
+      // Use the latest book index to route to another page after a specific timer
+      const latestBookIndex = latestBookIndexResponse.data.latestBookIndex
+      const delayInSeconds = 5 // Adjust the delay as needed (e.g., 5 seconds)
+
+      setTimeout(() => {
+        const url = `/view-latest-book/${userId}/${latestBookIndex}`
+        navigate(url) // Use navigate to route to the specified URL
+      }, delayInSeconds * 150) // Convert seconds to milliseconds
     } catch (error) {
       console.error(error)
       setResponse("An error occurred. Please try again.")
