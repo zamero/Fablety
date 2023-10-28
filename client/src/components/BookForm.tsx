@@ -100,93 +100,96 @@ const BookForm: React.FC<BookFormProps> = ({
           <Loader />
         )
       ) : (
-        <div className="flex justify-center scale-75 -translate-y-12 mb-20">
-          <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
-            <form
-              onSubmit={handleSubmit}
-              className="bg-neutral-950 rounded-xl shadow-lg p-10"
-            >
-              <h2 className="text-xl text-violet-500 font-semibold mb-5 mt-8 uppercase text-center">
-                Create Book
-              </h2>
-
-              <div className="mb-5">
-                <label
-                  htmlFor="name"
-                  className="block text-gray-100 text-sm font-bold mb-2"
-                >
-                  Name
-                </label>
-                <input
-                  className="bg-neutral-800 shadow appearance-none rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
-                  id="name"
-                  type="text"
-                  placeholder=""
-                  required
-                  onChange={onNameChange}
-                />
-              </div>
-
-              <div className="mb-5">
-                <label
-                  htmlFor="gender"
-                  className="block text-gray-100 text-sm font-bold mb-2"
-                >
-                  Gender
-                </label>
-                <input
-                  className="bg-neutral-800 shadow appearance-none rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
-                  id="gender"
-                  type="text"
-                  placeholder=""
-                  required
-                  onChange={onGenderChange}
-                />
-              </div>
-
-              <div className="mb-5">
-                <label
-                  htmlFor="gender"
-                  className="block text-gray-100 text-sm font-bold mb-2"
-                >
-                  Mood
-                </label>
-                <input
-                  className="bg-neutral-800 shadow appearance-none rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
-                  id="gender"
-                  type="text"
-                  placeholder=""
-                  required
-                  onChange={onMoodChange}
-                />
-              </div>
-
-              <div className="mb-5">
-                <label
-                  htmlFor="gender"
-                  className="block text-gray-100 text-sm font-bold mb-2"
-                >
-                  Genre
-                </label>
-                <input
-                  className="bg-neutral-800 shadow appearance-none rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
-                  id="gender"
-                  type="text"
-                  placeholder=""
-                  required
-                  onChange={onGenreChange}
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="bg-violet-600 hover.bg-violet-500 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
+        <>
+          <Loader />
+          <div className="flex justify-center scale-75 -translate-y-12 mb-20">
+            <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
+              <form
+                onSubmit={handleSubmit}
+                className="bg-neutral-950 rounded-xl shadow-lg p-10"
               >
-                Submit
-              </button>
-            </form>
+                <h2 className="text-xl text-violet-500 font-semibold mb-5 mt-8 uppercase text-center">
+                  Create Book
+                </h2>
+
+                <div className="mb-5">
+                  <label
+                    htmlFor="name"
+                    className="block text-gray-100 text-sm font-bold mb-2"
+                  >
+                    Name
+                  </label>
+                  <input
+                    className="bg-neutral-800 shadow appearance-none rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+                    id="name"
+                    type="text"
+                    placeholder=""
+                    required
+                    onChange={onNameChange}
+                  />
+                </div>
+
+                <div className="mb-5">
+                  <label
+                    htmlFor="gender"
+                    className="block text-gray-100 text-sm font-bold mb-2"
+                  >
+                    Gender
+                  </label>
+                  <input
+                    className="bg-neutral-800 shadow appearance-none rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+                    id="gender"
+                    type="text"
+                    placeholder=""
+                    required
+                    onChange={onGenderChange}
+                  />
+                </div>
+
+                <div className="mb-5">
+                  <label
+                    htmlFor="gender"
+                    className="block text-gray-100 text-sm font-bold mb-2"
+                  >
+                    Mood
+                  </label>
+                  <input
+                    className="bg-neutral-800 shadow appearance-none rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+                    id="gender"
+                    type="text"
+                    placeholder=""
+                    required
+                    onChange={onMoodChange}
+                  />
+                </div>
+
+                <div className="mb-5">
+                  <label
+                    htmlFor="gender"
+                    className="block text-gray-100 text-sm font-bold mb-2"
+                  >
+                    Genre
+                  </label>
+                  <input
+                    className="bg-neutral-800 shadow appearance-none rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+                    id="gender"
+                    type="text"
+                    placeholder=""
+                    required
+                    onChange={onGenreChange}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="bg-violet-600 hover.bg-violet-500 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </>
   )

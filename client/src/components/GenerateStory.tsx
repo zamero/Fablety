@@ -49,7 +49,7 @@ const GenerateStory: React.FC = () => {
       // Use the latest book index to route to another page after a specific timer
       const latestBookIndex = latestBookIndexResponse.data.latestBookIndex
       console.log(latestBookIndex)
-      const delayInSeconds = 150 // Adjust the delay as needed (e.g., 5 seconds)
+      const delayInSeconds = 140 // Adjust the delay as needed (e.g., 5 seconds)
 
       setTimeout(() => {
         const url = `/book/${latestBookIndex}`
