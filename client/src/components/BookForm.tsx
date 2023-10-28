@@ -101,7 +101,6 @@ const BookForm: React.FC<BookFormProps> = ({
         )
       ) : (
         <>
-          <Loader />
           <div className="flex justify-center scale-75 -translate-y-12 mb-20">
             <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
               <form
