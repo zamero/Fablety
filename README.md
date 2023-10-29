@@ -13,7 +13,7 @@
 To get started with this project, follow the steps below:
 
 Clone the repository to your computer:
-git clone https://github.com/zamero/Fablety/tree/master
+git clone https://github.com/zamero/Fablety/
 <br>Navigate to the project directory:
 Bash
 cd Fablety
